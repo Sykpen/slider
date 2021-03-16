@@ -1,0 +1,48 @@
+@keyframes slider__item-autoplay_count_3 {
+	0% {
+		opacity: 0;
+	}
+	10% {
+		opacity: 0.1;
+	}
+	33% {
+		opacity: 0.33;
+	}
+	43% {
+		opacity: 0.43;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes alina {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes reverse_alina {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}
+
+.one_slide_main {
+	width: 1000px;
+	height: 98vh;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 54px;
+	font-weight: bold;
+	border: 2px solid black;
+	margin-bottom: 25px;
+}

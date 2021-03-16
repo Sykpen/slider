@@ -1,0 +1,18 @@
+.slider_main {
+	overflow: hidden;
+	width: 1004px;
+	height: 100vh;
+	margin: 0 auto;
+}
+
+.infinite_scroll {
+	position: absolute;
+	bottom: 25px;
+	left: 25px;
+}
+
+.slides_to_show {
+	position: absolute;
+	bottom: 25px;
+	left: 225px;
+}
