@@ -8,6 +8,7 @@ import "./index.css";
 
 const Slider = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
+	const [secondActiveIndex, setSecondActiveIndex] = useState(activeIndex + 1);
 
 	const [infiniteScroll, setInfiniteScroll] = useState(false);
 
@@ -15,14 +16,16 @@ const Slider = () => {
 
 	const [rightArrowClicked, setRightArrowClicked] = useState();
 
-	const [slidesToShow, setSlidesToShow] = useState(1);
+	const [multipluSlides, setMultipluSlides] = useState(false);
 
 	const disablePreviousArrow = () => {
 		return activeIndex <= 0 && infiniteScroll === false ? true : false;
 	};
 
 	const disableNextArrow = () => {
-		return activeIndex >= sliderContent.length - 1 && infiniteScroll === false
+		return activeIndex >=
+			(multipluSlides ? sliderContent.length - 2 : sliderContent.length - 1) &&
+			infiniteScroll === false
 			? true
 			: false;
 	};
@@ -38,26 +41,69 @@ const Slider = () => {
 		"slide8",
 	];
 
-	console.log(sliderContent.slice(-activeIndex));
-
 	const nextSlide = () => {
 		setLeftArrowClicked(false);
 		setRightArrowClicked(true);
+
+		if (multipluSlides) {
+			if (activeIndex + 2 >= sliderContent.length) {
+				if (secondActiveIndex === 0) {
+					setActiveIndex(1);
+					setSecondActiveIndex(secondActiveIndex + 2);
+					return;
+				}
+				setActiveIndex(0);
+				setSecondActiveIndex(1);
+
+				return;
+			}
+			if (secondActiveIndex + 2 >= sliderContent.length) {
+				setActiveIndex(activeIndex + 2);
+				setSecondActiveIndex(0);
+				return;
+			}
+			setActiveIndex(activeIndex + 2);
+			setSecondActiveIndex(secondActiveIndex + 2);
+			return;
+		}
+
 		if (activeIndex + 1 >= sliderContent.length) {
 			setActiveIndex(0);
 			return;
 		}
 		setActiveIndex(activeIndex + 1);
+		setSecondActiveIndex(secondActiveIndex + 1);
 	};
 
 	const previousSlide = () => {
 		setRightArrowClicked(false);
 		setLeftArrowClicked(true);
+
+		if (multipluSlides) {
+			if (activeIndex - 2 < 0) {
+				if (activeIndex === 1) {
+					setActiveIndex(sliderContent.length - 1);
+					setSecondActiveIndex(secondActiveIndex - 2);
+					return;
+				}
+
+				setActiveIndex(sliderContent.length - 2);
+				setSecondActiveIndex(sliderContent.length - 1);
+				return;
+			}
+			setActiveIndex(activeIndex - 2);
+			secondActiveIndex === 0
+				? setSecondActiveIndex(sliderContent.length - 2)
+				: setSecondActiveIndex(secondActiveIndex - 2);
+			return;
+		}
+
 		if (activeIndex - 1 < 0) {
 			setActiveIndex(sliderContent.length - 1);
 			return;
 		}
 		setActiveIndex(activeIndex - 1);
+		setSecondActiveIndex(secondActiveIndex - 1);
 	};
 
 	return (
@@ -77,6 +123,19 @@ const Slider = () => {
 					/>
 				) : null
 			)}
+
+			{multipluSlides
+				? sliderContent.map((slide, i) =>
+						slide === sliderContent[secondActiveIndex] ? (
+							<Slide
+								content={slide}
+								leftArrowClicked={leftArrowClicked}
+								rightArrowClicked={rightArrowClicked}
+								width={"100%"}
+							/>
+						) : null
+				  )
+				: null}
 			<div className={"infinite_scroll"}>
 				<button onClick={() => setInfiniteScroll(true)}>
 					Бесконечная прокрутка
@@ -84,7 +143,7 @@ const Slider = () => {
 			</div>
 
 			<div className={"slides_to_show"}>
-				<button onClick={() => setSlidesToShow(2)}>2 слайда</button>
+				<button onClick={() => setMultipluSlides(true)}>2 слайда</button>
 			</div>
 		</div>
 	);

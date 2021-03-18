@@ -3,8 +3,9 @@ import ReactDom from "react-dom";
 
 import "./index.css";
 
-const Slide = ({ content, leftArrowClicked, rightArrowClicked }) => {
+const Slide = ({ content, leftArrowClicked, rightArrowClicked, width }) => {
 	const mystyle = {
+		width: width,
 		animation: `${leftArrowClicked ? "reverse_alina" : "alina"} 1s`,
 	};
 
