@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactDom from "react-dom";
 import ArrowsBlock from "./ArrowsBlock";
+import Dot from "./Dot";
 
 import Slide from "./OneSlide";
 
@@ -40,6 +41,11 @@ const Slider = () => {
 		"slide7",
 		"slide8",
 	];
+
+	const handleDotClick = (id) => {
+		setActiveIndex(id);
+		setSecondActiveIndex(id + 1);
+	};
 
 	const nextSlide = () => {
 		setLeftArrowClicked(false);
@@ -144,6 +150,28 @@ const Slider = () => {
 
 			<div className={"slides_to_show"}>
 				<button onClick={() => setMultipluSlides(true)}>2 слайда</button>
+			</div>
+
+			<div className={"dots_container"}>
+				{multipluSlides
+					? sliderContent.map((slides, i) =>
+							i % 2 === 0 ? (
+								<Dot
+									key={slides}
+									active={activeIndex === i}
+									id={i}
+									handleDotClick={handleDotClick}
+								/>
+							) : null
+					  )
+					: sliderContent.map((slides, i) => (
+							<Dot
+								key={slides}
+								active={activeIndex === i}
+								id={i}
+								handleDotClick={handleDotClick}
+							/>
+					  ))}
 			</div>
 		</div>
 	);
