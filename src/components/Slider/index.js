@@ -32,14 +32,14 @@ const Slider = () => {
 	};
 
 	const sliderContent = [
-		"slide1",
-		"slide2",
-		"slide3",
-		"slide4",
-		"slide5",
-		"slide6",
-		"slide7",
-		"slide8",
+		{ text: "slide1" },
+		{ image: "https://www.touropia.com/gfx/b/2020/01/indonesia.jpg" },
+		{ text: "slide3" },
+		{ image: "https://www.touropia.com/gfx/b/2020/01/indonesia.jpg" },
+		{ text: "slide5" },
+		{ image: "https://www.touropia.com/gfx/b/2020/01/indonesia.jpg" },
+		{ text: "slide7" },
+		{ text: "slide8" },
 	];
 
 	const handleDotClick = (id) => {
@@ -123,7 +123,8 @@ const Slider = () => {
 			{sliderContent.map((slide, i) =>
 				slide === sliderContent[activeIndex] ? (
 					<Slide
-						content={slide}
+						content={slide.text}
+						imgUrl={slide.image}
 						leftArrowClicked={leftArrowClicked}
 						rightArrowClicked={rightArrowClicked}
 					/>
@@ -134,7 +135,8 @@ const Slider = () => {
 				? sliderContent.map((slide, i) =>
 						slide === sliderContent[secondActiveIndex] ? (
 							<Slide
-								content={slide}
+								content={slide.text}
+								imgUrl={slide.image}
 								leftArrowClicked={leftArrowClicked}
 								rightArrowClicked={rightArrowClicked}
 								width={"100%"}
@@ -157,7 +159,7 @@ const Slider = () => {
 					? sliderContent.map((slides, i) =>
 							i % 2 === 0 ? (
 								<Dot
-									key={slides}
+									key={slides.text}
 									active={activeIndex === i}
 									id={i}
 									handleDotClick={handleDotClick}
@@ -166,7 +168,7 @@ const Slider = () => {
 					  )
 					: sliderContent.map((slides, i) => (
 							<Dot
-								key={slides}
+								key={slides.text}
 								active={activeIndex === i}
 								id={i}
 								handleDotClick={handleDotClick}
