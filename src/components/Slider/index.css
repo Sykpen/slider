@@ -18,3 +18,13 @@
 	bottom: 25px;
 	left: 225px;
 }
+
+.dots_container {
+	position: absolute;
+	bottom: 25px;
+	left: calc(50% - 60px);
+	width: 120px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
