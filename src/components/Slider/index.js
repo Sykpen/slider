@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import ReactDom from "react-dom";
 import ArrowsBlock from "./ArrowsBlock";
 import Dot from "./Dot";
@@ -50,6 +50,8 @@ const Slider = () => {
 	const nextSlide = () => {
 		setLeftArrowClicked(false);
 		setRightArrowClicked(true);
+
+		console.log("menya collayt");
 
 		if (multipluSlides) {
 			if (activeIndex + 2 >= sliderContent.length) {
@@ -128,6 +130,8 @@ const Slider = () => {
 						leftArrowClicked={leftArrowClicked}
 						rightArrowClicked={rightArrowClicked}
 						width={multipluSlides ? "40%" : null}
+						moveLeft={previousSlide}
+						moveRight={nextSlide}
 					/>
 				) : null
 			)}
