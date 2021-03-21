@@ -4,10 +4,6 @@ import Slider from "./components/Slider";
 const root = document.getElementById("root");
 
 const App = () => {
-	return (
-		<div>
-			<Slider />
-		</div>
-	);
+	return <Slider />;
 };
 ReactDom.render(<App />, root);

@@ -9,22 +9,30 @@ const ArrowsBlock = ({
 	previousArrowDisable,
 	nextArrowDisable,
 }) => {
+	const previousDisableButtonStyle = {
+		cursor: `${previousArrowDisable ? "not-allowed" : "pointer"}`,
+		opacity: `${previousArrowDisable ? "0.5" : "1"}`,
+	};
+
+	const nextDisableButtonStyle = {
+		cursor: `${nextArrowDisable ? "not-allowed" : "pointer"}`,
+		opacity: `${nextArrowDisable ? "0.5" : "1"}`,
+	};
+
 	return (
 		<>
 			<button
-				className={"left_arrow"}
+				className={"arrow left_arrow"}
 				onClick={() => onPreviousSLide()}
 				disabled={previousArrowDisable}
-			>
-				Предыдущий
-			</button>
+				style={previousDisableButtonStyle}
+			></button>
 			<button
-				className={"right_arrow"}
+				className={"arrow right_arrow"}
 				onClick={() => onNextSlide()}
 				disabled={nextArrowDisable}
-			>
-				Следующий
-			</button>
+				style={nextDisableButtonStyle}
+			></button>
 		</>
 	);
 };
