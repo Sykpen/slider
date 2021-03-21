@@ -127,6 +127,7 @@ const Slider = () => {
 						imgUrl={slide.image}
 						leftArrowClicked={leftArrowClicked}
 						rightArrowClicked={rightArrowClicked}
+						width={multipluSlides ? "40%" : null}
 					/>
 				) : null
 			)}
@@ -139,7 +140,7 @@ const Slider = () => {
 								imgUrl={slide.image}
 								leftArrowClicked={leftArrowClicked}
 								rightArrowClicked={rightArrowClicked}
-								width={"100%"}
+								width={"40%"}
 							/>
 						) : null
 				  )

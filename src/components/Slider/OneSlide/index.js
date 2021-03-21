@@ -12,7 +12,7 @@ const Slide = ({
 }) => {
 	const mystyle = {
 		width: width,
-		animation: `${leftArrowClicked ? "reverse_alina" : "alina"} 1s`,
+		animation: `${leftArrowClicked ? "left" : "right"} 1s`,
 	};
 
 	const image = {
@@ -20,8 +20,17 @@ const Slide = ({
 		backgroundImage: `${imgUrl ? `url(${imgUrl})` : null}`,
 	};
 
+	const hadleToughtStart = (e) => {
+		console.log(e.changedTouches[0].pageX);
+		console.log(e.clientX);
+	};
+
 	return (
-		<div className={"one_slide_main"} style={mystyle}>
+		<div
+			className={"one_slide_main"}
+			style={mystyle}
+			onTouchStart={(e) => hadleToughtStart(e)}
+		>
 			<p className={"slide_content"}>{content}</p>
 			<div>
 				<img src={imgUrl} className={"image"}></img>
