@@ -51,8 +51,6 @@ const Slider = () => {
 		setLeftArrowClicked(false);
 		setRightArrowClicked(true);
 
-		console.log("menya collayt");
-
 		if (multipluSlides) {
 			if (activeIndex + 2 >= sliderContent.length) {
 				if (secondActiveIndex === 0) {
@@ -132,6 +130,8 @@ const Slider = () => {
 						width={multipluSlides ? "40%" : null}
 						moveLeft={previousSlide}
 						moveRight={nextSlide}
+						previousArrowDisable={disablePreviousArrow()}
+						nextArrowDisable={disableNextArrow()}
 					/>
 				) : null
 			)}
@@ -145,6 +145,10 @@ const Slider = () => {
 								leftArrowClicked={leftArrowClicked}
 								rightArrowClicked={rightArrowClicked}
 								width={"40%"}
+								moveLeft={previousSlide}
+								moveRight={nextSlide}
+								previousArrowDisable={disablePreviousArrow()}
+								nextArrowDisable={disableNextArrow()}
 							/>
 						) : null
 				  )

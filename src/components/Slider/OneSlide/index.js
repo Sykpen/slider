@@ -10,6 +10,8 @@ const Slide = ({
 	width,
 	moveLeft,
 	moveRight,
+	previousArrowDisable,
+	nextArrowDisable,
 }) => {
 	const mystyle = {
 		width: width,
@@ -25,14 +27,16 @@ const Slide = ({
 	const hadleToughtEnd = (e) => {
 		if (
 			toughtStartPoint > e.changedTouches[0].pageX &&
-			toughtStartPoint - e.changedTouches[0].pageX > 50
+			toughtStartPoint - e.changedTouches[0].pageX > 50 &&
+			nextArrowDisable === false
 		) {
 			moveRight();
 			return;
 		}
 		if (
 			toughtStartPoint < e.changedTouches[0].pageX &&
-			e.changedTouches[0].pageX - toughtStartPoint > 50
+			e.changedTouches[0].pageX - toughtStartPoint > 50 &&
+			previousArrowDisable === false
 		) {
 			moveLeft();
 		}
