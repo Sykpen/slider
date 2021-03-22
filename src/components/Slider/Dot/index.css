@@ -1,0 +1,18 @@
+.one_dot_main {
+	width: 10px;
+	height: 10px;
+	border: 1px solid black;
+	border-radius: 50%;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.one_dot_main:hover {
+	background-color: red !important;
+}
+
+@media (max-width: 600px) {
+	.one_dot_main:hover {
+		background-color: white;
+	}
+}

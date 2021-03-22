@@ -1,0 +1,40 @@
+.arrow {
+	border: solid black;
+	border-width: 0 5px 5px 0;
+	display: inline-block;
+	padding: 3px;
+	background-color: inherit !important;
+	cursor: pointer;
+}
+
+.arrow:focus {
+	outline: none;
+}
+
+.left_arrow {
+	transform: rotate(135deg);
+	position: absolute;
+	left: 50px;
+	width: 35px;
+	height: 35px;
+	top: calc(50% - 25px);
+}
+
+.right_arrow {
+	transform: rotate(-45deg);
+	position: absolute;
+	right: 50px;
+	width: 35px;
+	height: 35px;
+	top: calc(50% - 25px);
+}
+
+@media (max-width: 740px) {
+	.left_arrow {
+		left: 10px;
+	}
+
+	.right_arrow {
+		right: 10px;
+	}
+}
