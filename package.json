@@ -13,7 +13,7 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "webpack serve --mode development --hot --open",
-		"build": "webpack — mode production"
+		"build": "webpack --mode production"
 	},
 	"dependencies": {
 		"@babel/core": "^7.13.10",
