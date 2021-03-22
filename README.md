@@ -7,13 +7,13 @@ React.js adaptive `Slider`.
 ```
 git clone https://github.com/Sykpen/slider.git
 cd slider
-npm install / yarn
+yarn
 ```
 
 ## Running the app
 
 ```
-npm run start / yarn start
+yarn start
 ```
 
 ## Slider features
@@ -28,4 +28,4 @@ npm run start / yarn start
 
 ## Demo
 
-Demo: ссылка на демо
+Demo: https://potapov-sergey-slider.netlify.app/
