@@ -1,7 +1,3 @@
-## React native Slider
-
-React.js adaptive Slider.
-
 ## Installation
 
 ```
