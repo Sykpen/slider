@@ -17,7 +17,26 @@ const Slider = () => {
 
 	const [rightArrowClicked, setRightArrowClicked] = useState();
 
-	const [multipluSlides, setMultipluSlides] = useState(false);
+	const [multipleSlides, setmultipleSlides] = useState(false);
+
+	const [sliderContent, setSliderContent] = useState([
+		{ text: "slide1" },
+		{
+			image: "https://cdnimg.rg.ru/img/content/168/10/26/kotik_d_850_d_850.jpg",
+		},
+		{ text: "slide3" },
+		{
+			image:
+				"https://cs9.pikabu.ru/post_img/big/2017/01/25/6/1485331254192128001.jpg",
+		},
+		{ text: "slide5" },
+		{
+			image:
+				"https://catmolly.com/wp-content/uploads/2019/01/klichki-dlya-kotov.jpg",
+		},
+		{ text: "slide7" },
+		{ text: "slide8" },
+	]);
 
 	const disablePreviousArrow = () => {
 		return activeIndex <= 0 && infiniteScroll === false ? true : false;
@@ -25,22 +44,11 @@ const Slider = () => {
 
 	const disableNextArrow = () => {
 		return activeIndex >=
-			(multipluSlides ? sliderContent.length - 2 : sliderContent.length - 1) &&
+			(multipleSlides ? sliderContent.length - 2 : sliderContent.length - 1) &&
 			infiniteScroll === false
 			? true
 			: false;
 	};
-
-	const sliderContent = [
-		{ text: "slide1" },
-		{ image: "https://www.touropia.com/gfx/b/2020/01/indonesia.jpg" },
-		{ text: "slide3" },
-		{ image: "https://www.touropia.com/gfx/b/2020/01/indonesia.jpg" },
-		{ text: "slide5" },
-		{ image: "https://www.touropia.com/gfx/b/2020/01/indonesia.jpg" },
-		{ text: "slide7" },
-		{ text: "slide8" },
-	];
 
 	const handleDotClick = (id) => {
 		setActiveIndex(id);
@@ -51,7 +59,7 @@ const Slider = () => {
 		setLeftArrowClicked(false);
 		setRightArrowClicked(true);
 
-		if (multipluSlides) {
+		if (multipleSlides) {
 			if (activeIndex + 2 >= sliderContent.length) {
 				if (secondActiveIndex === 0) {
 					setActiveIndex(1);
@@ -85,7 +93,7 @@ const Slider = () => {
 		setRightArrowClicked(false);
 		setLeftArrowClicked(true);
 
-		if (multipluSlides) {
+		if (multipleSlides) {
 			if (activeIndex - 2 < 0) {
 				if (activeIndex === 1) {
 					setActiveIndex(sliderContent.length - 1);
@@ -112,6 +120,14 @@ const Slider = () => {
 		setSecondActiveIndex(secondActiveIndex - 1);
 	};
 
+	const handleInfiniteMode = () => {
+		setInfiniteScroll(!infiniteScroll);
+	};
+
+	const handleMultipleSlidesMode = () => {
+		setmultipleSlides(!multipleSlides);
+	};
+
 	return (
 		<div className={"slider_main"}>
 			<ArrowsBlock
@@ -127,7 +143,7 @@ const Slider = () => {
 						imgUrl={slide.image}
 						leftArrowClicked={leftArrowClicked}
 						rightArrowClicked={rightArrowClicked}
-						width={multipluSlides ? "40%" : null}
+						width={multipleSlides ? "40%" : null}
 						moveLeft={previousSlide}
 						moveRight={nextSlide}
 						previousArrowDisable={disablePreviousArrow()}
@@ -136,7 +152,7 @@ const Slider = () => {
 				) : null
 			)}
 
-			{multipluSlides
+			{multipleSlides
 				? sliderContent.map((slide, i) =>
 						slide === sliderContent[secondActiveIndex] ? (
 							<Slide
@@ -153,18 +169,32 @@ const Slider = () => {
 						) : null
 				  )
 				: null}
-			<div className={"infinite_scroll"}>
-				<button onClick={() => setInfiniteScroll(true)}>
-					Бесконечная прокрутка
-				</button>
-			</div>
 
-			<div className={"slides_to_show"}>
-				<button onClick={() => setMultipluSlides(true)}>2 слайда</button>
+			<div className={"slider_options_block"}>
+				<div>
+					<p>Infinite mode</p>
+					<label className={"switch"}>
+						<input type="checkbox"></input>
+						<span
+							className={"slider round"}
+							onClick={() => handleInfiniteMode()}
+						></span>
+					</label>
+				</div>
+				<div>
+					<p>Multiplu slides mode</p>
+					<label className={"switch"}>
+						<input type="checkbox"></input>
+						<span
+							className={"slider round"}
+							onClick={() => handleMultipleSlidesMode()}
+						></span>
+					</label>
+				</div>
 			</div>
 
 			<div className={"dots_container"}>
-				{multipluSlides
+				{multipleSlides
 					? sliderContent.map((slides, i) =>
 							i % 2 === 0 ? (
 								<Dot

@@ -10,3 +10,9 @@
 .one_dot_main:hover {
 	background-color: red !important;
 }
+
+@media (max-width: 600px) {
+	.one_dot_main:hover {
+		background-color: white;
+	}
+}

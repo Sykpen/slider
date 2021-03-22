@@ -18,24 +18,24 @@ const Slide = ({
 		animation: `${leftArrowClicked ? "left" : "right"} 1s`,
 	};
 
-	const [toughtStartPoint, setToughtStartPoint] = useState();
+	const [touchStartPoint, setTouchStartPoint] = useState();
 
-	const hadleToughtStart = (e) => {
-		setToughtStartPoint(e.changedTouches[0].pageX);
+	const hadleTouchStart = (e) => {
+		setTouchStartPoint(e.changedTouches[0].pageX);
 	};
 
-	const hadleToughtEnd = (e) => {
+	const hadleTouchEnd = (e) => {
 		if (
-			toughtStartPoint > e.changedTouches[0].pageX &&
-			toughtStartPoint - e.changedTouches[0].pageX > 50 &&
+			touchStartPoint > e.changedTouches[0].pageX &&
+			touchStartPoint - e.changedTouches[0].pageX > 50 &&
 			nextArrowDisable === false
 		) {
 			moveRight();
 			return;
 		}
 		if (
-			toughtStartPoint < e.changedTouches[0].pageX &&
-			e.changedTouches[0].pageX - toughtStartPoint > 50 &&
+			touchStartPoint < e.changedTouches[0].pageX &&
+			e.changedTouches[0].pageX - touchStartPoint > 50 &&
 			previousArrowDisable === false
 		) {
 			moveLeft();
@@ -46,8 +46,8 @@ const Slide = ({
 		<div
 			className={"one_slide_main"}
 			style={mystyle}
-			onTouchStart={(e) => hadleToughtStart(e)}
-			onTouchEnd={(e) => hadleToughtEnd(e)}
+			onTouchStart={(e) => hadleTouchStart(e)}
+			onTouchEnd={(e) => hadleTouchEnd(e)}
 		>
 			<p className={"slide_content"}>{content}</p>
 			<div>
