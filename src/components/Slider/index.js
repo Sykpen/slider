@@ -182,7 +182,7 @@ const Slider = () => {
 					</label>
 				</div>
 				<div>
-					<p>Multiplu slides mode</p>
+					<p>Multiple slides mode</p>
 					<label className={"switch"}>
 						<input type="checkbox"></input>
 						<span
